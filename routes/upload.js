@@ -4,7 +4,7 @@ var util = require("util");
 var formidable = require('formidable');
 var qiniuFn = require('../modules/qiuniu1.js')
 /* GET home page. */
-router.post('/upload', function(req, res, next) {
+router.post('/', function(req, res, next) {
   console.log(req.query);
   console.log("==================upload===========================");
   var form = new formidable.IncomingForm();

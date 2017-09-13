@@ -50,6 +50,26 @@
                         </thead>
                         <tbody>
                             <!-- 提供讲师数据库 -->
+                            <tr>
+                                <td>1</td>
+                                <td>小白</td>
+                                <td>小二</td>
+                                <td>2016.11.12</td>
+                                <td>男</td>
+                                <td>18301683746</td>
+                                <td>2017.09.08</td>
+                                <td data-tc-id="{{ $value._id }}">
+                                    <a href="#teacherModal" 
+                                       class="showInfo btn btn-info btn-xs">查 看</a>
+                                    <a href="/teacher/add?tc_id={{ $value._id }}" 
+                                       class="editInfo btn btn-info btn-xs">编 辑</a>
+                                    <a href="javascript:;" 
+                                       class="status btn btn-warning btn-xs"
+                                       data-tc-status="1">
+                                       启 用
+                                    </a>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -143,7 +163,7 @@
 
     <%- include( '../common/script.html' ) %>
     <script>    
-    require( [ 'teacherList' ] );
+    require( [ 'photoList' ] );
     </script>
 </body>
 </html>

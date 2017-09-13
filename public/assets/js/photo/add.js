@@ -9,8 +9,6 @@ define( [
 	'validate'
 ], function ( $, template,WebUploader ) {
 
-alert("1111");
-
     // 当domReady的时候开始初始化
     $(function() {
         var $wrap = $('#uploader'),
@@ -179,14 +177,9 @@ alert("1111");
             fileNumLimit: 300,
             fileSizeLimit: 200 * 1024 * 1024,    // 200 M
             fileSingleSizeLimit: 50 * 1024 * 1024,    // 50 M
-            startUpload:function(){
-                console.log(uploade,"wwwwwwwwwwwwwwww")
-            },
-            uploadStart:function(){
-                console.log("99999999999999999999")
-            }
         });
         uploader.on('startUpload',function(){
+            uploader.options.formData.test = "23111111"
             console.log("开始上传啦")
         })
         uploader.on('uploadStart',function(){

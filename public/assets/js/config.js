@@ -23,7 +23,7 @@ require.config({
 		// 自定义模块
 		common: 		'js/common',
 		login: 			'js/index/login',
-		teacherList:    'js/teacher/list',
+		photoList:    	'js/photo/list',
 		photoAdd:     	'js/photo/add',
 		settings:       'js/index/settings',
 		tools: 			'js/tools',
