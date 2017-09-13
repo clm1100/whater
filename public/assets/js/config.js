@@ -19,12 +19,16 @@ require.config({
 		CKEDITOR:       'lib/ckeditor/ckeditor',
 		Jcrop:          'lib/Jcrop-WIP-2.x/js/Jcrop',
 		WebUploader:    'lib/webuploader/dist/webuploader',
+		Handlebars:     'lib/handlebars/handlebars',
+		waterfall:      'lib/waterfall/waterfall',
+		rebox:       	'lib/rebox/jquery-rebox',
 
 		// 自定义模块
 		common: 		'js/common',
 		login: 			'js/index/login',
 		photoList:    	'js/photo/list',
 		photoAdd:     	'js/photo/add',
+		photoIndex:     'js/index/index',
 		settings:       'js/index/settings',
 		tools: 			'js/tools',
 		courseAdd:      'js/course/add',
@@ -41,11 +45,20 @@ require.config({
 		validate: {
 			deps: [ 'jquery' ]
 		},
+		rebox: {
+			deps: [ 'jquery' ]
+		},
+		waterfall: {
+			deps: [ 'jquery' ]
+		},
 		uploadify: {
 			deps: [ 'jquery' ]
 		},
 		CKEDITOR: {
 			exports: 'CKEDITOR'
+		},
+		Handlebars: {
+			exports: 'Handlebars'
 		},
 		Jcrop: {
 			deps: [ 'jquery' ]
