@@ -147,6 +147,7 @@
             formData: {
                 
             },
+            fileVal:'file',
             dnd: '#dndArea',
             paste: '#uploader',
             swf: '../../dist/Uploader.swf',

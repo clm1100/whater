@@ -1,0 +1,128 @@
+// 倒入公共的 less 样式设置
+@import './base.less';
+
+
+
+
+
+// 左边栏
+.aside {
+	width: 180px;
+	height: 100%;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+
+	position: absolute;
+
+
+
+	background-color: #2f4050;
+
+
+
+	// 用户信息
+	.profile {
+		background-color: #243443;
+		padding-bottom: 15px;
+
+		.avatar {
+			padding: 30px 0 10px;
+			text-align: center;
+		}
+
+		h4 {
+			color: #a9b0c2;
+			text-align: center;
+
+		}
+
+		img {
+			width: 75px;
+			height: 75px;
+			border: 2px solid rgba( 255, 255, 255, 0.5 );
+		}
+	}
+
+	// 导航菜单
+	.menu {
+		margin-top: 20px;
+		ul {
+		 	margin: 0;
+		 	padding: 0;
+		}
+
+		li {
+			list-style: none;
+			padding: 2px 0;
+		}
+
+		li a {
+			display: block;
+			line-height: 1;
+			padding: 10px 20px;
+			color: #a9b0c2;
+			text-decoration: none;
+			font-weigth: bolder;
+		}
+		li a:hover {
+			background-color: #243443;
+			color: #f6f6f6;
+		}
+
+		li li a {
+			padding-left: 40px;
+		}
+
+		ul ul .hide {
+			display: none;
+		}
+	}
+
+}
+
+
+// 右边栏
+.main {
+	background-color: #f4f6f8;
+
+
+	height: 700px;
+
+	margin-left: 180px;
+
+
+
+
+	// 覆盖 bootstrap 默认的颜色
+	.header .navbar {
+		background-color: #FFF;
+
+		a {
+			color: #337AB7;
+		}
+	}
+
+
+
+
+
+	.body {
+		// 覆盖 面包屑导航的样式
+		.breadcrumb, .panel {
+			background-color: #FFF;
+			border: 1px solid #E7E7E7;
+		}
+
+		padding: 0 20px;
+
+
+
+		table th, table td {
+			font-weight: normal;
+			text-align: center;
+		}
+
+	}
+}
