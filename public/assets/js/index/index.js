@@ -1,6 +1,6 @@
 
 
-define( [ 'jquery'
+define( [ 'jquery1'
 		,'Handlebars'
 		,'waterfall'
 		,'rebox'

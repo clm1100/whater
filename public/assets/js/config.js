@@ -6,6 +6,7 @@ require.config({
 		// 第三方模块
 		less: 			'lib/less.js/less',
 		jquery: 		'lib/jquery/jquery-3.2.0',
+		jquery1: 		'lib/jquery/jquery-1.11.1',
 		cookie: 		'lib/jquery.cookie/jquery.cookie',
 		template: 		'lib/art-template/template-web',
 		bootstrap: 		'lib/bootstrap/dist/js/bootstrap',
@@ -46,10 +47,10 @@ require.config({
 			deps: [ 'jquery' ]
 		},
 		rebox: {
-			deps: [ 'jquery' ]
+			deps: [ 'jquery1' ]
 		},
 		waterfall: {
-			deps: [ 'jquery' ]
+			deps: [ 'jquery1' ]
 		},
 		uploadify: {
 			deps: [ 'jquery' ]
