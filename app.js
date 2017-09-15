@@ -13,7 +13,7 @@ var category		= require('./routes/category');
 
 
 var app = express();
-
+require('./models/orm.js');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'ejs');
