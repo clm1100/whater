@@ -161,9 +161,9 @@ define( [
             dnd: '#dndArea',
             paste: '#uploader',
             swf: '../../dist/Uploader.swf',
-            chunked: false,
+            chunked: true,
             chunkSize: 512 * 1024,
-            server: '/upload'+'?'+window.location.search,
+            server: '/upload',
             // runtimeOrder: 'flash',
 
             // accept: {
