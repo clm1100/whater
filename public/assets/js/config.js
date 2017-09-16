@@ -30,11 +30,12 @@ require.config({
 		photoList:    	'js/photo/list',
 		photoAdd:     	'js/photo/add',
 		photoIndex:     'js/index/index',
+		categoryAdd:    'js/category/categoryAdd',
+
+
+
 		settings:       'js/index/settings',
 		tools: 			'js/tools',
-		courseAdd:      'js/course/add',
-		step1:          'js/course/add_step1',
-		step2:          'js/course/add_step2',
 	},
 	shim: {
 		bootstrap: {
