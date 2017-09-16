@@ -1,18 +1,19 @@
 var MongooseDao  = require('mongoosedao');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var ObjectId = mongoose.Schema.Types.ObjectId
 var CategorySchema = new Schema({
 		name: 				{ type: 'string' },
 		createdate: 		{ type: Date, default: Date.now },
 		headurl: 			{ type: 'string' },
 		ordernumber: 		{ type: Number,default:1 },
-		user:   			{type:}
+		user:   			{ type: ObjectId,ref: 'User'}
 });
 var CategoryModel = mongoose.model('CategoryModel', CategorySchema);
 
-var MeetingDao    = new MongooseDao(CategoryModel);
+var Dao   		  = new MongooseDao(CategoryModel);
  
 module.exports = {
  CategoryModel:CategoryModel,
- CategoryDao:MeetingDao
+ Dao:Dao
 };
