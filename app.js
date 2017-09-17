@@ -18,6 +18,13 @@ require('./models/orm.js');
 app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'ejs');
 app.set('view engine', 'html');
+if(app.get("env")=="development"){
+	console.log("development")
+	app.set('view cache');
+}else{
+	app.set('view cache', true);
+}
+
 
 app.engine('html',ejs.__express);
 
@@ -28,8 +35,11 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
+if(app.get("env")=="development"){
+	app.use(express.static(path.join(__dirname, 'public')));
+}else{
+	app.use(express.static(path.join(__dirname, 'public')));
+}
 
 /*开发环境存放模拟数据文件夹*/
 app.use(express.static(path.join(__dirname, 'resource')));
