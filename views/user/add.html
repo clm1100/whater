@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学IT - 后台管理系统</title>
+    <%- include( '../common/style.html' ) %>
+</head>
+<body>
+    
+    <!-- 侧边栏 -->
+    <%- include( '../common/aside.html' ) %>
+    <!-- 主体 -->
+    <div class="main">
+        <div class="container-fluid">
+            <!-- 头部 -->
+            <%- include( '../common/header.html' ) %>
+            <!-- 编辑分类 -->
+            <div class="body course-category container">
+                <!-- 面包屑 -->
+                <ol class="breadcrumb">
+                    <li><a href="javascript:;">分类管理</a></li>
+                    <li class="active">添加分类</li>
+                </ol>
+                <div class="row category-add">
+                <div class="col-md-offset-2 col-md-2">
+                    <div class="headerImg">
+                        <img id="headerImg" src="" alt="">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                <!-- 表单数据 -->
+                    <form class="categoryForm">
+                      <div class="form-group">
+                        <label for="name">分类名称</label>
+                        <input
+                        name="name"
+                        type="text" 
+                        class="form-control" 
+                        id="exampleInputEmail1" 
+                        placeholder="分类名称">
+                      </div>
+                      <div class="form-group">
+                        <label for="ordernumber">排序</label>
+                        <input
+                        name= "ordernumber"
+                        type="number" 
+                        class="form-control"  
+                        placeholder="排序">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputFile">分类头图</label>
+                        <input
+                        name="headurl"
+                        type="file" 
+                        id="exampleInputFile">
+                      </div>
+                      <div class="form-group">
+                            <label for="" class=" control-label">
+                                创建者
+                            </label>
+                            <select name="user1" class="form-control input-sm">
+                                    <option value="1">顶级分类</option>
+                                    <option value="2">前端开发</option>
+                                    <option value="3">后端开发</option>
+                                    <option value="4">数据库</option>
+                                    <option value="5">云计算</option>
+                                    <option value="6">视觉设计</option>
+                            </select>
+                        </div>
+                      <a href="javascript:;"
+                       type="submit" 
+                       class="btn btn-success btn-sm pull-right">
+                       提交
+                       </a>
+                    </form>
+                </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <%- include( '../common/script.html' ) %>
+    <script>    
+     require( [ 'categoryAdd' ] );
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+

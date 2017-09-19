@@ -11,15 +11,14 @@ var imgDomain = "http://oqsw5qjf9.bkt.clouddn.com/"
 
 router.get('/', function(req, res, next) {
 	// res.send('respond with a resource');
-	UserDao.create({
-		name: "12345"
-	}, function(err, result) {
-		if (!err) {
-			res.json(result);
-		} else {
-			res.send("2222");
-		}
-	})
+	// UserDao.find({}, function(err, result) {
+	// 	if (!err) {
+	// 		res.json(result);
+	// 	} else {
+	// 		res.send("2222");
+	// 	}
+	// })
+	res.render('user/list',{})
 });
 
 

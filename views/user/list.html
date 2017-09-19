@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学IT - 后台管理系统</title>
+    <%- include( '../common/style.html' ) %>
+</head>
+<body>
+    
+    <!-- 侧边栏 -->
+    <%- include( '../common/aside.html' ) %>
+    <!-- 主体 -->
+    <div class="main">
+        <div class="container-fluid">
+            <!-- 头部 -->
+            <%- include( '../common/header.html' ) %>
+            <!-- 分类 -->
+            <div class="body course-category">
+                <!-- 面包屑 -->
+                <ol class="breadcrumb">
+                    <li><a href="javascript:;">用户管理</a></li>
+                    <li class="active">用户列表</li>
+                </ol>
+                <div class="page-title">
+                    <a href="/category/add" class="btn btn-success btn-sm pull-right">添加用户</a>
+                </div>
+                <div class="panel panel-default">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th width="18%">头像</th>
+                                <th>账号</th>
+                                <th>性别</th>
+                                <th>级别</th>
+                                <th>创建时间</th>
+                                <th width="10%">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="active">
+                                <td class="text-left">
+                                    <div class="row">
+                                      <div class="col-xs-12 col-md-12">
+                                        <a href="#" class="thumbnail center-block" style="width: 100px;border-radius: 50%">
+                                          <img style="width: 100px" class=" img-circle" src="http://oqsw5qjf9.bkt.clouddn.com/3eed69c5bb91a712fbd929cb02b37ba2.jpg-ys" alt="...">
+                                        </a>
+                                      </div>
+                                    </div>
+                                </td>
+                                <td>12</td>
+                                <td>是</td>
+                                <td>10</td>
+                                <td>10</td>
+                                <td>
+                                    <a href="./course_category_add.html" class="btn btn-info btn-xs">编辑</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <%- include( '../common/script.html' ) %>
+    <script>    
+    // require( [ 'categoryList' ] );
+    </script>
+</body>
+</html>
+
+
+
+

@@ -32,8 +32,6 @@ require.config({
 		photoIndex:     'js/index/index',
 		categoryAdd:    'js/category/categoryAdd',
 
-
-
 		settings:       'js/index/settings',
 		tools: 			'js/tools',
 	},
