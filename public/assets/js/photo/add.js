@@ -11,6 +11,23 @@ define( [
 
     // 当domReady的时候开始初始化
     $(function() {
+        
+    function getCategoryList() {
+        let url = "/category/api/list";
+        return $.get(url)
+    }
+
+    getCategoryList().success(function(data) {
+        console.log(data);
+    }).error(function() {
+        console.log("报错了")
+    }).complete(function() {
+        console.log("完成了")
+    })
+
+
+
+
         var $wrap = $('#uploader'),
 
             // 图片容器
@@ -185,7 +202,6 @@ define( [
         uploader.on('uploadStart',function(){
             uploader.options.formData.title = $(".filelist input").eq(n++).val()
         })
-        console.log(uploader);
         // 拖拽时不接受 js, txt 文件。
         uploader.on( 'dndAccept', function( items ) {
             var denied = false,
