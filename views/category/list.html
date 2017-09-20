@@ -28,41 +28,15 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th width="18%">分类名称</th>
-                                <th>课程数量</th>
-                                <th>是否显示</th>
-                                <th>排序</th>
+                                <th width="18%">头图</th>
+                                <th>分类名称</th>
+                                <th>创建者</th>
+                                <th>创建时间</th>
                                 <th width="10%">操作</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr class="active">
-                                <td class="text-left">前端开发</td>
-                                <td>12</td>
-                                <td>是</td>
-                                <td>10</td>
-                                <td>
-                                    <a href="./course_category_add.html" class="btn btn-info btn-xs">编辑</a>
-                                </td>
-                            </tr>
-                            <tr class="active">
-                                <td class="text-left">前端开发</td>
-                                <td>12</td>
-                                <td>是</td>
-                                <td>10</td>
-                                <td>
-                                    <a href="./course_category_add.html" class="btn btn-info btn-xs">编辑</a>
-                                </td>
-                            </tr>
-                             <tr class="active">
-                                <td class="text-left">前端开发</td>
-                                <td>12</td>
-                                <td>是</td>
-                                <td>10</td>
-                                <td>
-                                    <a href="./course_category_add.html" class="btn btn-info btn-xs">编辑</a>
-                                </td>
-                            </tr>
+                        <tbody id="userTbody">
+                            
                         </tbody>
                     </table>
                 </div>
@@ -70,9 +44,40 @@
             
         </div>
     </div>
+    <script type="text/template" id="userListTpl">
+       {{each list }}
+         <tr class="active">
+            <td class="text-left">
+                <div class="row">
+                  <div class="col-xs-12 col-md-12">
+                    <a href="javascript:;" 
+                    class="thumbnail center-block" 
+                    style="width: 100px;border-radius: 50%">
+                      <img 
+                      style="width: 100px" 
+                      class=" img-circle" 
+                      src="{{$value.headurl?$value.headurl+'-ys':'/assets/images/default.jpg'}}" 
+                      alt="...">
+                    </a>
+                  </div>
+                </div>
+            </td>
+            <td>{{$value.name}}</td>
+            <td>{{$value.user?$value.user.username:"匿名"}}</td>
+            <td>{{$value.createdate}}</td>
+            <td data-id={{$value._id}}>
+                <a href="./course_category_add.html" class="btn btn-info btn-xs">编辑</a>
+                ||
+                <a href="javascript:;" class="delete btn btn-danger btn-xs">删除</a>
+            </td>
+        </tr>
+       {{/each}}
+    </script>
+
+
     <%- include( '../common/script.html' ) %>
     <script>    
-    // require( [ 'categoryList' ] );
+    require( [ 'categoryList' ] );
     </script>
 </body>
 </html>

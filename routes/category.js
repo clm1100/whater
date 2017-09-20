@@ -13,6 +13,46 @@ router.get('/', function(req, res, next) {
   res.render('category/list', { title: 'Express' });
 });
 
+
+router.get('/api/list', function(req, res, next) {
+  // res.render('category/list', { title: 'Express' });
+  categoryModel.find({}).populate({path: 'user', select: { _id: 1 ,username:1}}).exec(function(err,result){
+  	if(!err){
+  		res.json({
+  			code:"200",
+  			data:result
+  		})
+  	}else{
+  		res.json({
+  			code:"500",
+  			msg:"错了"
+  		})
+  	}
+  })
+});
+
+
+
+router.get('/api/delete/:id',(req, res)=>{
+	let id = req.params.id;
+	categoryDao.delete({_id:id},function(err){
+		if(!err){
+			res.json({code:200,msg:"ok"});
+		}else{
+			res.json({code:500,msg:"出错了"})
+		}
+	})
+})
+
+
+
+
+
+
+
+
+
+
 router.get('/add', function(req, res, next) {
   res.render('category/add', { title: 'Express' });
   

@@ -7,7 +7,7 @@ var CategorySchema = new Schema({
 		createdate: 		{ type: Date, default: Date.now },
 		headurl: 			{ type: 'string' },
 		ordernumber: 		{ type: Number,default:1 },
-		user:   			{ type: ObjectId,ref: 'User'}
+		user:   			{ type: ObjectId,ref: 'UserModel'}
 });
 var CategoryModel = mongoose.model('CategoryModel', CategorySchema);
 

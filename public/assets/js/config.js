@@ -30,7 +30,10 @@ require.config({
 		photoList:    	'js/photo/list',
 		photoAdd:     	'js/photo/add',
 		photoIndex:     'js/index/index',
+		userIndex:     	'js/user/list',
 		categoryAdd:    'js/category/categoryAdd',
+		categoryList: 	'js/category/list',
+		userAdd:    	'js/user/userAdd',
 
 		settings:       'js/index/settings',
 		tools: 			'js/tools',

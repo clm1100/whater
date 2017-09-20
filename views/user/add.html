@@ -18,8 +18,8 @@
             <div class="body course-category container">
                 <!-- 面包屑 -->
                 <ol class="breadcrumb">
-                    <li><a href="javascript:;">分类管理</a></li>
-                    <li class="active">添加分类</li>
+                    <li><a href="javascript:;">用户管理</a></li>
+                    <li class="active">添加用户</li>
                 </ol>
                 <div class="row category-add">
                 <div class="col-md-offset-2 col-md-2">
@@ -31,24 +31,33 @@
                 <!-- 表单数据 -->
                     <form class="categoryForm">
                       <div class="form-group">
-                        <label for="name">分类名称</label>
+                        <label for="username">用户账号</label>
                         <input
-                        name="name"
+                        name="username"
                         type="text" 
                         class="form-control" 
                         id="exampleInputEmail1" 
                         placeholder="分类名称">
                       </div>
                       <div class="form-group">
-                        <label for="ordernumber">排序</label>
+                        <label for="password">初始密码</label>
                         <input
-                        name= "ordernumber"
+                        name="password"
+                        type="text" 
+                        class="form-control" 
+                        id="exampleInputEmail1" 
+                        placeholder="分类名称">
+                      </div>
+                      <div class="form-group">
+                        <label for="power">权限</label>
+                        <input
+                        name= "power"
                         type="number" 
                         class="form-control"  
                         placeholder="排序">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputFile">分类头图</label>
+                        <label for="exampleInputFile">用户头像</label>
                         <input
                         name="headurl"
                         type="file" 
@@ -56,15 +65,12 @@
                       </div>
                       <div class="form-group">
                             <label for="" class=" control-label">
-                                创建者
+                                性别
                             </label>
-                            <select name="user1" class="form-control input-sm">
-                                    <option value="1">顶级分类</option>
-                                    <option value="2">前端开发</option>
-                                    <option value="3">后端开发</option>
-                                    <option value="4">数据库</option>
-                                    <option value="5">云计算</option>
-                                    <option value="6">视觉设计</option>
+                            <select name="sex" class="form-control input-sm">
+                                    <option value="">请选择</option>
+                                    <option value="1">男</option>
+                                    <option value="0">女</option>
                             </select>
                         </div>
                       <a href="javascript:;"
@@ -82,7 +88,7 @@
     </div>
     <%- include( '../common/script.html' ) %>
     <script>    
-     require( [ 'categoryAdd' ] );
+     require( [ 'userAdd' ] );
     </script>
 </body>
 </html>

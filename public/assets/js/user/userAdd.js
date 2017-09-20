@@ -2,12 +2,6 @@
 define(['jquery', 'template', 'bootstrap', 'form'], function($, template) {
 
 
-	function getUserList(){
-		var url = "/users/api/list";
-		return $.get(url);
-	}
-	
-
 	function previewFile() {
 		var preview = $("#headerImg");
 		var file = $('input[type=file]')[0].files[0];
@@ -29,23 +23,18 @@ define(['jquery', 'template', 'bootstrap', 'form'], function($, template) {
 			console.log('123')
 		}
 	}
-
-	getUserList().then(function(data){
-		console.log(data);
-		var html = template('userListTpl',{list:data.data});
-		$("#userList").html(html);
-	});
-
 	$('input[type=file]').change(function(){
 		previewFile()
 	});
 
 	$(".categoryForm a").click(function(){
 		$( ".categoryForm" ).ajaxSubmit({
-			url: '/category/add',
+			url: '/users/add',
 			type: 'POST',
 			success: function ( info ) {
-				console.log(info);
+				if(info.code=="200"){
+					window.location.href = "/users";
+				}
 			}
 		});
 	})

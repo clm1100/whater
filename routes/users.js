@@ -10,28 +10,58 @@ var UserDao = require('../models/user').Dao;
 var imgDomain = "http://oqsw5qjf9.bkt.clouddn.com/"
 
 router.get('/', function(req, res, next) {
-	// res.send('respond with a resource');
-	// UserDao.find({}, function(err, result) {
-	// 	if (!err) {
-	// 		res.json(result);
-	// 	} else {
-	// 		res.send("2222");
-	// 	}
-	// })
+
 	res.render('user/list',{})
 });
 
 
 
+router.get('/add', function(req, res, next) {
+
+	res.render('user/add',{})
+});
+
+router.get('/api/list',(req, res)=>{
+	UserDao.find({}, function(err, result) {
+		if (!err) {
+			res.json({
+				code:200,
+				data:result
+			});
+		} else {
+			res.send({
+				code:500,
+				data:"错误"
+			});
+		}
+	})
+})
+
+
+router.get('/api/delete/:id',(req, res)=>{
+	let id = req.params.id;
+	UserDao.delete({_id:id},function(err){
+		if(!err){
+			res.json({code:200,msg:"ok"});
+		}else{
+			res.json({code:500,msg:"出错了"})
+		}
+	})
+})
+
+
+
+
 router.post('/add',upload.single('headurl'), function(req, res, next) {
 	// res.send('respond with a resource');
-	console.log("22222222222222222222222222222222222")
 	var username = _.trim(req.body.username);
     var password = _.trim(req.body.password);
-    if(_.isEmpty(username) || _.isEmpty(password)) { res.json({ status:500, msg:'信息完整' }); return; };
+    console.log("========++++++++++++++++")
+    if(_.isEmpty(username) || _.isEmpty(password)) { res.json({ status:500, msg:'信息不完整' }); return; };
     let obj = {
     	username:username,
-    	password:password
+    	password:password,
+    	sex:req.body.sex
     }
     var imgPath = req.file.path;
   	var imgName = req.file.filename+path.extname(req.file.originalname);
@@ -43,7 +73,10 @@ router.post('/add',upload.single('headurl'), function(req, res, next) {
 	 	console.log(obj);
 	 	UserDao.create(obj,function(err,user){
 	 		if(!err){
-	 			res.json(user);
+	 			res.json({
+	 				code:"200",
+	 				msg:"ok"
+	 			});
 	 		}else{
 	 			res.json(err);
 	 		}

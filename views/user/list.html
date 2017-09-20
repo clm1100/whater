@@ -22,7 +22,7 @@
                     <li class="active">用户列表</li>
                 </ol>
                 <div class="page-title">
-                    <a href="/category/add" class="btn btn-success btn-sm pull-right">添加用户</a>
+                    <a href="/users/add" class="btn btn-success btn-sm pull-right">添加用户</a>
                 </div>
                 <div class="panel panel-default">
                     <table class="table table-bordered">
@@ -36,25 +36,8 @@
                                 <th width="10%">操作</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr class="active">
-                                <td class="text-left">
-                                    <div class="row">
-                                      <div class="col-xs-12 col-md-12">
-                                        <a href="#" class="thumbnail center-block" style="width: 100px;border-radius: 50%">
-                                          <img style="width: 100px" class=" img-circle" src="http://oqsw5qjf9.bkt.clouddn.com/3eed69c5bb91a712fbd929cb02b37ba2.jpg-ys" alt="...">
-                                        </a>
-                                      </div>
-                                    </div>
-                                </td>
-                                <td>12</td>
-                                <td>是</td>
-                                <td>10</td>
-                                <td>10</td>
-                                <td>
-                                    <a href="./course_category_add.html" class="btn btn-info btn-xs">编辑</a>
-                                </td>
-                            </tr>
+                        <tbody id="userTbody">
+                            
                         </tbody>
                     </table>
                 </div>
@@ -62,9 +45,41 @@
             
         </div>
     </div>
+    <script type="text/template" id="userListTpl">
+       {{each list }}
+         <tr class="active">
+            <td class="text-left">
+                <div class="row">
+                  <div class="col-xs-12 col-md-12">
+                    <a href="javascript:;" 
+                    class="thumbnail center-block" 
+                    style="width: 100px;border-radius: 50%">
+                      <img 
+                      style="width: 100px" 
+                      class=" img-circle" 
+                      src="{{$value.headurl?$value.headurl+'-ys':'/assets/images/default.jpg'}}" 
+                      alt="...">
+                    </a>
+                  </div>
+                </div>
+            </td>
+            <td>{{$value.username}}</td>
+            <td>{{$value.sex?($value.sex==1?"男":"女"):'未知'}}</td>
+            <td>{{$value.power}}</td>
+            <td>{{$value.createdate}}</td>
+            <td data-id={{$value._id}}>
+                <a href="./course_category_add.html" class="btn btn-info btn-xs">编辑</a>
+                ||
+                <a href="javascript:;" class="delete btn btn-danger btn-xs">删除</a>
+            </td>
+        </tr>
+       {{/each}}
+    </script>
+
+
     <%- include( '../common/script.html' ) %>
     <script>    
-    // require( [ 'categoryList' ] );
+    require( [ 'userIndex' ] );
     </script>
 </body>
 </html>
