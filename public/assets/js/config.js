@@ -23,6 +23,7 @@ require.config({
 		Handlebars:     'lib/handlebars/handlebars',
 		waterfall:      'lib/waterfall/waterfall',
 		rebox:       	'lib/rebox/jquery-rebox',
+		moment:       	'lib/moment/moment',
 
 		// 自定义模块
 		common: 		'js/common',

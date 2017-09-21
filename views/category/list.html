@@ -64,7 +64,7 @@
             </td>
             <td>{{$value.name}}</td>
             <td>{{$value.user?$value.user.username:"匿名"}}</td>
-            <td>{{$value.createdate}}</td>
+            <td>{{$value.createdate|formatTime}}</td>
             <td data-id={{$value._id}}>
                 <a href="./course_category_add.html" class="btn btn-info btn-xs">编辑</a>
                 ||

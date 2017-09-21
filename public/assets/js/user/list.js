@@ -1,5 +1,14 @@
 // 讲师列表页面的模块
-define(['jquery', 'template', 'bootstrap', 'form'], function($, template) {
+define([
+	'jquery', 
+	'template', 
+	'moment',
+	'bootstrap', 'form'], function($, template,moment) {
+moment.locale("zh-cn");
+template.defaults.imports.formatTime = function ( time ) {
+	return moment(time).fromNow();
+
+}
 
 function getUser(){
 	var url = "/users/api/list";

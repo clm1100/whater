@@ -1,6 +1,11 @@
 // 讲师列表页面的模块
-define(['jquery', 'template', 'bootstrap', 'form'], function($, template) {
-	alert("1111")
+define(['jquery', 'template', 'moment','bootstrap', 'form'], function($, template,moment) {
+
+moment.locale("zh-cn");
+template.defaults.imports.formatTime = function ( time ) {
+	return moment(time).fromNow();
+
+}
 
 function getCategory(){
 	var url = "/category/api/list";
