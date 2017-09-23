@@ -29,6 +29,7 @@ return bcrypt.compareSync(password, this.encrypted_password);
 };
 
 UserSchema.pre('save', function(next) {
+	console.log("=================",this.isNew)
 if(!_.isEmpty(this.password)) {
   var salt = bcrypt.genSaltSync(10);
   this.encrypted_password = bcrypt.hashSync(this.password, salt);
