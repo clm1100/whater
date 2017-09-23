@@ -8,13 +8,14 @@ var UserSchema = new Schema({
 		username: 			{ type: 'string' },
 		password: 			{ type: 'string' },
 		encrypted_password: { type: 'string' },
-		createdate: 		{ type: Date, default: Date.now },
 		headurl: 			{ type: 'string' },
 		power: 				{ type: Number,default:1 },
 		sex: 				{ type: Number }   
 });
 
+var lastMod = require('./lastMod');
 
+UserSchema.plugin(lastMod, { index: true });
 // 默认返回结果没有这个属性,但是在访问时会显示出来;
 
 UserSchema.virtual('sex_to_s').get(function() {
@@ -29,7 +30,7 @@ return bcrypt.compareSync(password, this.encrypted_password);
 };
 
 UserSchema.pre('save', function(next) {
-	console.log("=================",this.isNew)
+	console.log("我是模块")
 if(!_.isEmpty(this.password)) {
   var salt = bcrypt.genSaltSync(10);
   this.encrypted_password = bcrypt.hashSync(this.password, salt);

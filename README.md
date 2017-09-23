@@ -85,3 +85,105 @@ module.exports = function(path, name, callback) {
 ~~~
 
 步骤：根据ak 和 sk 生成验证token，获取文件流，定义文件名称，还有一个不知道干嘛的putExtra四个参数凑齐,还有别忘了设置机房；
+##关于pre与post预处理
+一段经典代码：设置数据的初始时间与更改时间
+
+~~~
+var mongoose = require('mongoose');
+
+var MovieSchema = new mongoose.Schema({
+  director: String,
+  title: String,
+  language: String,
+  country: String,
+  summary: String,
+  flash: String,
+  poster: String,
+  year: Number,
+  meta: {
+    createAt:{
+      type:Date,
+      default: Date.now()
+    },
+    updateAt:{
+      type:Date,
+      default: Date.now()
+    }
+  }
+});
+
+MovieSchema.pre('save', function(next){
+  if(this.isNew){
+    this.meta.createAt = this.meta.updateAt = Date.now();
+  }else{
+    this.meta.updateAt = Date.now();
+  }
+
+  next();
+});
+
+MovieSchema.statics = {
+  fetch: function(cb){
+    return this
+      .find({})
+      .sort('meta.updateAt')
+      .exec(cb);
+  },
+  findById: function(id, cb){
+    return this
+      .findOne({_id: id})
+      .exec(cb);
+  }
+};
+
+module.exports = MovieSchema;
+~~~
+
+将初始时间和修改时间存储在一个对象的两个属性中，通过pre绑定save事件，通过this.isNew判断是否是新生成的数据；从而修改不同的数据;
+关于plugins的用法：
+
+~~~
+// lastMod.js
+module.exports = exports = function lastModifiedPlugin (schema, options) {
+  schema.add({ lastMod: Date })
+  
+  schema.pre('save', function (next) {
+    this.lastMod = new Date
+    next()
+  })
+  
+  if (options && options.index) {
+    schema.path('lastMod').index(options.index)
+  }
+}
+// game-schema.js
+var lastMod = require('./lastMod');
+var Game = new Schema({ ... });
+Game.plugin(lastMod, { index: true });
+// player-schema.js
+var lastMod = require('./lastMod');
+var Player = new Schema({ ... });
+Player.plugin(lastMod);
+~~~
+
+关于mongoose存储数据的生命周期：
+
+~~~
+schema.post('init', function (doc) {
+  console.log('%s has been initialized from the db', doc._id);
+})
+schema.post('validate', function (doc) {
+  console.log('%s has been validated (but not saved yet)', doc._id);
+})
+schema.post('save', function (doc) {
+  console.log('%s has been saved', doc._id);
+})
+schema.post('remove', function (doc) {
+  console.log('%s has been removed', doc._id);
+})
+~~~
+
+pre与post的关系：如下
+pre();
+save()或者validate();
+post();
