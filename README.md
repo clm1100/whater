@@ -192,3 +192,5 @@ post();
 今天看了两个小包：
 数组拍平 https://github.com/jonschlinkert/arr-flatten
 这个仓库页面的库可以看看https://github.com/parro-it/awesome-micro-npm-packages
+知道了一个redis的库 ioredis https://github.com/luin/ioredis
+处理图片信息的库 exif：https://www.npmjs.com/package/exif
