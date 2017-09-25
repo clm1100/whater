@@ -11,7 +11,7 @@ module.exports = exports = function lastModifiedPlugin(schema, options) {
 	})
 
 	schema.pre('save', function(next) {
-		console.log("我是插件")
+		console.log("我是111插件")
 		if (this.isNew) {
 			this.lastMod = this.createdate = Date.now();
 		} else {

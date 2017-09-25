@@ -187,3 +187,8 @@ pre与post的关系：如下
 pre();
 save()或者validate();
 post();
+
+## 每天看十个npm包这个....
+今天看了两个小包：
+数组拍平 https://github.com/jonschlinkert/arr-flatten
+这个仓库页面的库可以看看https://github.com/parro-it/awesome-micro-npm-packages
