@@ -1,4 +1,4 @@
-const qiniu = require("qiniu");
+var qiniu = require("qiniu");
 var fs = require('fs');
 
 var bucket = 'clm2';

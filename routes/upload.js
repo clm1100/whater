@@ -1,12 +1,36 @@
 var express = require('express');
+const uuidv1 = require('uuid/v1');
 var router = express.Router();
 var util = require("util");
 var path = require("path");
 var formidable = require('formidable');
-var qiniuFn = require('../modules/qiuniu1.js')
+var qiniuFn = require('../modules/qiuniu1.js');
+var ImageModel  = require('../models/image.js').ImageModel;
+var ImageDao  = require('../models/image.js').Dao;
 var multer  = require('multer')
 /*此处的地址相对于app.js,可应用path模块控制路径或者直接用 ./public/m */
-var upload = multer({ dest: path.join(__dirname,'..','/public/m') })
+var upload = multer({ dest: path.join(__dirname,'..','/public/m') });
+
+
+var p1 =  function(obj){
+  return new Promise(function(resolve,reject){
+      ImageDao.create(obj,function(err,data){
+        if(!err){
+          resolve(data);
+        }else{
+          reject(err);
+        }
+      })
+  })
+};
+
+var p2 = function(imgPath,imgName){
+  return new Promise(function(resolve,reject){
+       qiniuFn(imgPath,imgName,function(data){
+      resolve(data);
+  });
+  })
+}
 
 /* formidable上传图片 */
 // router.post('/', function(req, res, next) {
@@ -31,11 +55,18 @@ var upload = multer({ dest: path.join(__dirname,'..','/public/m') })
 /*multer上传图片*/
 router.post('/', upload.single('file'), function (req, res, next) {
   // req.file is the name `file` file
-  // req.body will hold the text fields, if there were any
-  
+  // req.body will hold the text fields, if there were any;
+  var imgObj  = uuidv1()
+  console.log(imgObj);
+  console.log(req.body);
+  console.log(req.file);
   var imgPath = req.file.path;
-  var imgName = req.body.name;
-  qiniuFn(imgPath,imgName,function(data){
+  var imgName = imgObj+path.extname(req.file.originalname);
+ 
+  Promise.all([
+    p1({}),
+    p2(imgPath,imgName)
+    ]).then(function(data){
       res.json(data);
   })
 })

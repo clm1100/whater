@@ -196,7 +196,7 @@ define( [
             fileSingleSizeLimit: 50 * 1024 * 1024,    // 50 M
         });
         uploader.on('startUpload',function(){
-            uploader.options.formData.test = "23111111"
+            uploader.options.formData.test = $("#category").val()||null;
             console.log("开始上传啦")
         })
         uploader.on('uploadStart',function(){
