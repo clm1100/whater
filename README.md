@@ -194,3 +194,7 @@ post();
 这个仓库页面的库可以看看https://github.com/parro-it/awesome-micro-npm-packages
 知道了一个redis的库 ioredis https://github.com/luin/ioredis
 处理图片信息的库 exif：https://www.npmjs.com/package/exif
+
+集成redis数据库,将其安装为服务,并安装测试ioredis；
+redis下载地址：https://github.com/MicrosoftArchive/redis/releases
+安装成服务：http://blog.csdn.net/u010982856/article/details/51658184
