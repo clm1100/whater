@@ -198,3 +198,4 @@ post();
 集成redis数据库,将其安装为服务,并安装测试ioredis；
 redis下载地址：https://github.com/MicrosoftArchive/redis/releases
 安装成服务：http://blog.csdn.net/u010982856/article/details/51658184
+
