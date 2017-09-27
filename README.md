@@ -198,4 +198,9 @@ post();
 集成redis数据库,将其安装为服务,并安装测试ioredis；
 redis下载地址：https://github.com/MicrosoftArchive/redis/releases
 安装成服务：http://blog.csdn.net/u010982856/article/details/51658184
+## obj.toObject({virtuals: true})
+带有虚拟属性的对象不能直接使用res..json(obj);
+必须使用一个转化函数，res.json(result.toObject({virtuals: true}))
+## 七牛云的token本地化存储
+七牛云的存储需要用到token，这个token可以自定义一个过期时间，是有时间限制的，所以，我用数据库将其存储起来，每次用时去数据库取出来，并判断时间，如果存在和当前时间比对，未过期直接使用，过期的话，刷新一下，不存在的话生成一个新的，设置一个at属性，设置成数字时间戳；
 
