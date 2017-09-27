@@ -75,10 +75,15 @@ function getToken(appid, cb) {
   }, function(err, token) {
     if (token) {
       var difference = parseInt(new Date().getTime() / 1000) - token.at;
-      if (difference > 7100) refreshToken(appid, function(data, err) {
-        cb(data, err);
-      });
-      else cb(token, null);
+      if (difference > 7100) {
+        refreshToken(token, function(data, err) {
+          console.log('我过期了,修改已经存在的数据');
+          console.log(data);
+          cb(data, err);
+        });
+      } else {
+        cb(token, null);
+      }
     } else createToken(appid, function(data, err) {
       cb(data, err);
     });
@@ -102,7 +107,7 @@ function createToken(appid, cb) {
 
 }
 
-function refreshToken(appid, cb) {
+function refreshToken(token, cb) {
   var options = {
     scope: 'clm2',
     expires: 7200,
@@ -110,13 +115,18 @@ function refreshToken(appid, cb) {
   };
   var putPolicy = new qiniu.rs.PutPolicy(options);
   var uploadToken = putPolicy.uploadToken(mac);
-  qnTokenDao.update({
+  token.at = parseInt(new Date().getTime() / 1000);
+  token.token = uploadToken;
+  token.save(function(err,data){
+    cb(data,err)
+  })
+ /* qnTokenDao.updateOne({
     appid: 'clm2',
   }, {
     token: uploadToken,
     at: parseInt(new Date().getTime() / 1000)
   }, function(err, data) {
     cb(data, err)
-  })
+  })*/
 
 }
