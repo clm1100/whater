@@ -203,4 +203,6 @@ redis下载地址：https://github.com/MicrosoftArchive/redis/releases
 必须使用一个转化函数，res.json(result.toObject({virtuals: true}))
 ## 七牛云的token本地化存储
 七牛云的存储需要用到token，这个token可以自定义一个过期时间，是有时间限制的，所以，我用数据库将其存储起来，每次用时去数据库取出来，并判断时间，如果存在和当前时间比对，未过期直接使用，过期的话，刷新一下，不存在的话生成一个新的，设置一个at属性，设置成数字时间戳；
+## 下一步设置一个基于token验证的接口，结合redis数据库
+
 
