@@ -1,7 +1,7 @@
 // 定义一个 tools 模块
 // 来提供工具方法
 define( [ 'jquery' ], function ( $ ) {
-
+	console.log("tools")
 	var setMenu = function ( urlpart ) {
 		// 先获得当前页面的 pathname
 		var pathname = urlpart || location.pathname;
