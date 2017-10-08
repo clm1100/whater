@@ -35,6 +35,7 @@ require.config({
 		categoryAdd:    'js/category/categoryAdd',
 		categoryList: 	'js/category/list',
 		userAdd:    	'js/user/userAdd',
+		homeIndex:    	'js/home/homeIndex',
 
 		settings:       'js/index/settings',
 		tools: 			'js/tools',
