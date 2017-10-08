@@ -5,5 +5,12 @@ define( [
 	'template',
 	'form',
 ], function ( $, template,WebUploader ) {
-    alert("home")
+    function getDataList(){
+      return  $.get("/category/api/list")
+    };
+    getDataList().then(function(data){
+        console.log(data);
+        var html = template('categoryListTpl',{list:data.data});
+        $("#listOut").html(html)
+    });
 });
