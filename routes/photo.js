@@ -1,11 +1,25 @@
 var express = require('express');
 var ImageDao  = require('../models/image.js').Dao;
+var ImageModule  = require('../models/image.js').ImageModel;
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('photo/list', { title: 'Express' });
 });
+
+
+router.get('/api/:id', function(req, res, next) {
+  // res.json({ok:"4000"})
+  var id = req.params.id;
+  var page = req.query.page||1;
+  console.log(id);
+  ImageModule.find({category:id}).limit(10).skip(10*(page-1)).exec(function(err,data){
+    res.json(data);
+  });
+});
+
+
 
 router.get('/add', function(req, res, next) {
   res.render('photo/add', { title: 'Express' });

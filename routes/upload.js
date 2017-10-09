@@ -61,15 +61,22 @@ router.post('/', upload.single('file'), function(req, res, next) {
   var imgObj = uuidv1()
   console.log(imgObj);
   console.log(req.body);
+  var objBody = req.body;
   console.log(req.file);
   var imgPath = req.file.path;
   var imgName = imgObj + path.extname(req.file.originalname);
 
-  Promise.all([
-    p1({}),
+  Promise.resolve(
     p2(imgPath, imgName)
-  ]).then(function(data) {
-    res.json(data);
+  ).then(function(data) {
+    var newObj = {
+      url: "http://oqsw5qjf9.bkt.clouddn.com/" + data.key
+    };
+    var obj = Object.assign(objBody, newObj);
+    // res.json(data);
+    p1(obj).then(function(data) {
+      res.json(data);
+    })
   })
 });
 

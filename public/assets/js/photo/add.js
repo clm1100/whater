@@ -19,6 +19,8 @@ define( [
 
     getCategoryList().success(function(data) {
         console.log(data);
+        var html = template('categoryListTpl',{list:data.data})
+        $("#category").html(html)
     }).error(function() {
         console.log("报错了")
     }).complete(function() {
@@ -196,7 +198,7 @@ define( [
             fileSingleSizeLimit: 50 * 1024 * 1024,    // 50 M
         });
         uploader.on('startUpload',function(){
-            uploader.options.formData.test = $("#category").val()||null;
+            uploader.options.formData.category = $("#category").val()||null;
             console.log("开始上传啦")
         })
         uploader.on('uploadStart',function(){
