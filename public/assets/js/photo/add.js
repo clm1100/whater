@@ -180,8 +180,8 @@ define( [
             dnd: '#dndArea',
             paste: '#uploader',
             swf: '../../dist/Uploader.swf',
-            chunked: true,
-            chunkSize: 512 * 1024,
+            chunked: false,
+            chunkSize: 2 * 1024 * 1024,
             server: '/upload',
             // runtimeOrder: 'flash',
 
@@ -202,6 +202,7 @@ define( [
             console.log("开始上传啦")
         })
         uploader.on('uploadStart',function(){
+            console.log("连续")
             uploader.options.formData.title = $(".filelist input").eq(n++).val()
         })
         // 拖拽时不接受 js, txt 文件。

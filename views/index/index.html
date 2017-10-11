@@ -24,11 +24,13 @@
 
 <script type="text/template" id="waterfall-tpl">
 {{each result}}
+    {{if $value.url}}
     <div class="item" >
         <a href="{{$value.url}}" title="哈哈啊哈">
             <img src="{{$value.url}}" width="199"   />
         </a>
     </div>
+    {{/if}}
 {{/each}}
 </script>
 

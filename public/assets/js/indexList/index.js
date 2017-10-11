@@ -5,6 +5,7 @@ define(['jquery1', 'Handlebars', 'tools', 'template', 'waterfall', 'rebox'
         var id = tools.getSearch().id;
         $('#container').waterfall({
             itemCls: 'item',
+            isFadeIn: false,
             colWidth: 222,
             gutterWidth: 15,
             gutterHeight: 15,
