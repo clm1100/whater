@@ -14,7 +14,7 @@ router.get('/api/:id', function(req, res, next) {
   var id = req.params.id;
   var page = req.query.page||1;
   console.log(id);
-  ImageModule.find({category:id}).limit(10).skip(10*(page-1)).exec(function(err,data){
+  ImageModule.find({category:id}).limit(20).skip(20*(page-1)).exec(function(err,data){
     res.json(data);
   });
 });
