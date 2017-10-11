@@ -1,18 +1,16 @@
-define(['jquery1', 'Handlebars','tools', 'template','waterfall', 'rebox'
+define(['jquery1', 'Handlebars', 'tools', 'template', 'waterfall', 'rebox'
 
-], function($, Handlebars,tools,template) {
+], function($, Handlebars, tools, template) {
     $(function() {
-        console.log(tools.getSearch());
         var id = tools.getSearch().id;
-        console.log(id);
         $('#container').waterfall({
             itemCls: 'item',
             colWidth: 222,
             gutterWidth: 15,
             gutterHeight: 15,
-            checkImagesLoaded: false,
+            checkImagesLoaded: true,
             path: function(page) {
-                return '/photo/api/'+id+'?page=' + page;
+                return '/photo/api/' + id + '?page=' + page;
             },
             callbacks: {
                 /*
@@ -21,30 +19,22 @@ define(['jquery1', 'Handlebars','tools', 'template','waterfall', 'rebox'
                  */
                 loadingStart: function($loading) {
                     $loading.show();
-                    console.log($loading)
-                    console.log("start");
                 },
-                renderData: function (data, dataType) {
-                    console.log(data);
-                    // var tpl,
-                    //     template;
-                    //      console.log(data,dataType);
+                loadingFinished: function($loading, isBeyondMaxPage) {
+                        
+                        $loading.fadeOut();
+                    
+                },
+                renderData: function(data, dataType) {
 
-                    // if ( dataType === 'json' ||  dataType === 'jsonp'  ) { // json or jsonp format
-                    //     tpl = $('#waterfall-tpl').html();
-                    //     template = Handlebars.compile(tpl);
-
-                    //     return template(data);
-                    // } else { // html format
-                    //     return data;
-                    // }
-                    if(data.length<20){
-                        $('#container').waterfall('pause');
-                        return "<h1>没有了</h1>";
-
+                    var html = template('waterfall-tpl', {
+                        result: data
+                    });
+                    if (data.length <20) {
+                        $('#container').waterfall('pause', function(data) {
+                            console.log('没有了');
+                        });
                     }
-                    var html = template('waterfall-tpl',{result:data});
-                    console.log(html,"====================");
                     return html;
 
                 }
