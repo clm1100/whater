@@ -23,6 +23,8 @@ require.config({
 		Handlebars:     'lib/handlebars/handlebars',
 		waterfall:      'lib/waterfall/waterfall',
 		rebox:       	'lib/rebox/jquery-rebox',
+		lightgallery:   'lib/lightgallery/lightgallery-all.min',
+		swipebox:       'lib/swipebox/jquery.swipebox',
 		moment:       	'lib/moment/moment',
 
 		// 自定义模块
@@ -54,6 +56,9 @@ require.config({
 			deps: [ 'jquery1' ]
 		},
 		waterfall: {
+			deps: [ 'jquery1' ]
+		},
+		swipebox: {
 			deps: [ 'jquery1' ]
 		},
 		uploadify: {

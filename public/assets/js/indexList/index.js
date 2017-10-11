@@ -1,4 +1,4 @@
-define(['jquery1', 'Handlebars', 'tools', 'template', 'waterfall', 'rebox'
+define(['jquery1', 'Handlebars', 'tools', 'template', 'waterfall', 'rebox','swipebox'
 
 ], function($, Handlebars, tools, template) {
     $(function() {
@@ -22,16 +22,15 @@ define(['jquery1', 'Handlebars', 'tools', 'template', 'waterfall', 'rebox'
                     $loading.show();
                 },
                 loadingFinished: function($loading, isBeyondMaxPage) {
-                        
-                        $loading.fadeOut();
-                    
+                    $('.swipe').swipebox();
+                    $loading.fadeOut();
+
                 },
                 renderData: function(data, dataType) {
-
                     var html = template('waterfall-tpl', {
                         result: data
                     });
-                    if (data.length <20) {
+                    if (data.length < 20) {
                         $('#container').waterfall('pause', function(data) {
                             console.log('没有了');
                         });
@@ -41,8 +40,16 @@ define(['jquery1', 'Handlebars', 'tools', 'template', 'waterfall', 'rebox'
                 }
             }
         });
-        $('#container').rebox({
-            selector: 'a'
-        });
+        // $('#container').rebox({
+        //     speed: 600,
+        //     selector: 'a'
+        // });
+        // $('#container').bind('rebox:goto', function(e, i){
+        //     console.log("2222");
+        // });
+        // $('#container').on('click','.swipe',function(e) {
+        //     e.preventDefault();
+        //     $(this).swipebox();
+        // });
     })
 });
