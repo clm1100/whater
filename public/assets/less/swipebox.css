@@ -127,6 +127,7 @@ html.swipebox-html.swipebox-touch {
 
 #swipebox-prev,
 #swipebox-next,
+#swipebox-full,
 #swipebox-close {
   background-image: url(../img/icons.png);
   background-repeat: no-repeat;
@@ -161,6 +162,13 @@ html.swipebox-html.swipebox-touch {
   position: absolute;
   z-index: 9999;
   background-position: 15px 12px;
+}
+#swipebox-full {
+  top: 0;
+  right: 60px;
+  position: absolute;
+  z-index: 9999;
+  background: red;
 }
 
 .swipebox-no-close-button #swipebox-close {

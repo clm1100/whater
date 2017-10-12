@@ -1,4 +1,4 @@
-define(['jquery1', 'Handlebars', 'tools', 'template', 'waterfall', 'rebox','swipebox'
+define(['jquery1', 'Handlebars', 'tools', 'template', 'waterfall', 'rebox', 'swipebox'
 
 ], function($, Handlebars, tools, template) {
     $(function() {
@@ -22,7 +22,7 @@ define(['jquery1', 'Handlebars', 'tools', 'template', 'waterfall', 'rebox','swip
                     $loading.show();
                 },
                 loadingFinished: function($loading, isBeyondMaxPage) {
-                    $('.swipe').swipebox();
+                    // $('.swipe').swipebox();
                     $loading.fadeOut();
 
                 },
@@ -51,5 +51,16 @@ define(['jquery1', 'Handlebars', 'tools', 'template', 'waterfall', 'rebox','swip
         //     e.preventDefault();
         //     $(this).swipebox();
         // });
+        $('#container').click(function(e) {
+            e.preventDefault();
+            var arr = $('.swipe').map(function(i,e){
+                return {
+                    href:$(e).attr('href'),
+                    title:$(e).attr('title')
+                }
+            }).toArray();
+            console.log(arr);
+            $.swipebox(arr);
+        });
     })
 });
